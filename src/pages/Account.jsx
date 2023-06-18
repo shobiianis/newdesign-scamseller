@@ -1,43 +1,60 @@
-import React, { useState } from 'react'
-import { UserAuth } from '../context/AuthControler'
-import { database } from '../config/firebase'
-import { ref, set } from 'firebase/database';
-import { v4 as uuidv4 } from 'uuid';
-
+import React, { useState, useEffect } from 'react';
+import { UserAuth } from '../context/AuthControler';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
 const Account = () => {
-  const [definition,setDefinition]=useState("")
-  const {user,logOut}=UserAuth()
-  const handleSignOut=async()=>{
-    try{
-      await logOut()
-    }
-    catch(err){
-      console.log(err)
-    }
-   }
+  const [complainButtonVisible, setComplainButtonVisible] = useState(true);
+  const [searchBtnVisible,setSearchBtnVisible]=useState(true)
+  const navigate = useNavigate();
+  const location = useLocation();
 
-   const postToDb=async()=>{
-    
-    try{
-      const  dbRef=ref(database,`users/${user.uid}/posts/${uuidv4()}`)
-     
-      await set(dbRef,{post:definition})
-    
-    }catch(err){
-      console.log(err)
+  useEffect(() => {
+    // Check if the current path contains '/complain'
+    const isComplainPage = location.pathname.includes('/complain');
+    setComplainButtonVisible(!isComplainPage);
+    const isSearchPage=location.pathname.includes('/search')
+    setSearchBtnVisible(!isSearchPage)
+  }, [location]);
+
+  const gotoComplain = () => {
+    navigate('/account/complain');
+    setComplainButtonVisible(false);
+    setSearchBtnVisible(false) // Hide the button when clicked
+  };
+
+  const gotoSearch=()=>{
+    navigate('/account/search')
+    setSearchBtnVisible(false)
+    setComplainButtonVisible(false)
+  }
+
+  const { user, logOut } = UserAuth();
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (err) {
+      console.log(err);
     }
-   }
-    
+  };
 
-   
-      return <div>
+  return (
+    <div>
+      <Outlet />
 
-        <p>hello {user.displayName} <button onClick={handleSignOut}>logout</button> </p>
-        <input type="text" value={definition} onChange={(e)=>{setDefinition(e.target.value)}} />
-        <button onClick={postToDb}>submit</button>
-      </div> 
+      {complainButtonVisible && (
+        <button onClick={gotoComplain}>Complain</button>
+      )}
   
-  
-}
-export default Account
+        {searchBtnVisible && (
+        <button onClick={gotoSearch}>search</button>
+      )}
+
+      <p>
+        Hello {user.displayName}{' '}
+        <button onClick={handleSignOut}>Logout</button>{' '}
+      </p>
+    </div>
+  );
+};
+
+export default Account;
