@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
 
-      <img src={logo} alt="logo"  width={"200"} height={"200px"}/>
+      {/* <img src={logo} alt="logo"  width={"200"} height={"200px"}/> */}
       
 <AuthContextProvider>
 
