@@ -64,12 +64,27 @@ const SignIn = () => {
       type='light'
       label='Continue with Google'
       onClick={handleGoogleSignIn} />
-    <h3 className='mt-20 text-lg font-gFont text-center text-gray-700 '>● Easy to login ● Fast ● Reliable</h3>
+    <h3 className='mt-20 text-lg font-gFont text-center text-gray-700 '>● Easy to login ● Safe ● Reliable</h3>
     </div>
 
-    <div className='bg-black  hidden lg:flex lg:w-2/3 '>
-  h
-    </div>
+   {/* second portion starts here */}
+  
+    <div className='bg-black hidden lg:flex lg:w-2/3'>
+  <div className='flex flex-col'> {/* Use a container with flex-direction: column */}
+    <h1 className='text-rose-50 w-48 font-bold ml-10 mt-10 customBorder rounded p-2 h-12 font-gFont text-2xl'>
+      SCAM SELLER
+    </h1>
+    {/* two rings */}
+    <div className='text-white margin mt-20 flex  text-center'>
+      <h2 className='custom-circle font-gFont2 text-lg mt-5'>File a <br /> complaint</h2>
+      <h2 className='custom-circle mt-5  font-serif text-lg overlapping font-gFont2'>Search shddy <br />sellers</h2>
+      </div>
+      {/* <h3 className='text-white ml-20 mt-10 text-xl font-gFont'>-How many chances of me being scammed while shopping Online?</h3>
+      <h3 className='text-white ml-20 mt-5 text-xl font-gFont'>-Many</h3> */}
+      <h3 className='text-white text-xl mt-10 text-center '>there are <span className='circle'>45%</span> chances of you loosing money while shopping online, <br /><br /><br />so we make sure you count yourself in <span className='circle'>55%</span></h3>
+  </div>
+</div>
+
 
   </section>
 };

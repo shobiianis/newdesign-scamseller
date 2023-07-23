@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily:{
-      gFont:"Merriweather"
+      gFont:"Merriweather",
+      gFont2:'Playfair Display'
     }
   },
   plugins: [],

@@ -19,3 +19,38 @@
     padding-bottom: 20px;
   }
   
+
+  .customBorder{
+    border: 1px solid rgb(35, 35, 35);
+    box-shadow: 5px 3px  #8fcb9b;
+    background-color: #28282B;
+  }
+
+  .custom-circle{
+    border: 1px solid #ccf7d4;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    padding-top: 20%;
+    box-shadow: 1px 2px 2px 2px #8fcb9b; 
+    background-color: rgb(18, 17, 17);
+  }
+
+  .overlapping{
+    margin-left: -5%;
+   }
+
+
+  .margin{
+    margin-left: 20vw;
+   }
+
+
+.circle{
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 2%;
+  font-size: 40px;
+  background-color: #8fcb9b;
+  color: black;
+}
